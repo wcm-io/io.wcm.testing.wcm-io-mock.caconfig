@@ -27,7 +27,6 @@ import io.wcm.testing.mock.aem.context.AemContextImpl;
 
 /**
  * Mock context plugins.
- * TODO: remove this plugin as it has not effect?
  */
 public final class ContextPlugins {
 
