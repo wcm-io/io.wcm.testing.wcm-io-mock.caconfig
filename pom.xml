@@ -24,14 +24,14 @@
 
   <parent>
     <groupId>io.wcm</groupId>
-    <artifactId>io.wcm.testing.parent</artifactId>
-    <version>1.4.0</version>
-    <relativePath>../../parent/pom.xml</relativePath>
+    <artifactId>io.wcm.parent_toplevel</artifactId>
+    <version>2.0.0</version>
+    <relativePath/>
   </parent>
 
   <groupId>io.wcm</groupId>
   <artifactId>io.wcm.testing.wcm-io-mock.caconfig</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <packaging>jar</packaging>
 
   <name>Context-Aware Configuration Mock Helper</name>
@@ -39,9 +39,9 @@
   <url>${site.url}/${site.url.module.prefix}/</url>
 
   <scm>
-    <connection>scm:git:https://github.com/wcm-io/wcm-io-testing.git</connection>
-    <developerConnection>scm:git:https://github.com/wcm-io/wcm-io-testing.git</developerConnection>
-    <url>https://github.com/wcm-io/wcm-io-testing</url>
+    <connection>scm:git:https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.caconfig.git</connection>
+    <developerConnection>scm:git:https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.caconfig.git</developerConnection>
+    <url>https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.caconfig</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -49,7 +49,7 @@
     <site.url.module.prefix>testing/wcm-io-mock/caconfig</site.url.module.prefix>
 
     <!-- Enable reproducible builds -->
-    <project.build.outputTimestamp>${timestamp}</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2022-01-27T10:38:41Z</project.build.outputTimestamp>
   </properties>
 
   <dependencies>
@@ -68,7 +68,7 @@
     <dependency>
       <groupId>io.wcm</groupId>
       <artifactId>io.wcm.testing.aem-mock.junit4</artifactId>
-      <version>4.0.0</version>
+      <version>4.0.2</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -80,7 +80,7 @@
     <dependency>
       <groupId>org.apache.sling</groupId>
       <artifactId>org.apache.sling.testing.caconfig-mock-plugin</artifactId>
-      <version>1.3.2</version>
+      <version>1.3.6</version>
       <scope>provided</scope>
     </dependency>
 
@@ -150,13 +150,30 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <topSiteURL>${site.deploy.url}</topSiteURL>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <configuration>
+          <subDirectory>${site.url.module.prefix}</subDirectory>
+          <skipDeletedFiles>true</skipDeletedFiles>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
   <distributionManagement>
     <site>
       <id>${site.deploy.id}</id>
-      <url>${site.deploy.url}${site.url.module.prefix}</url>
+      <url>${site.deploy.url}</url>
     </site>
   </distributionManagement>
 

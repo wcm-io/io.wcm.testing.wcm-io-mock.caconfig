@@ -27,7 +27,6 @@ import io.wcm.testing.mock.aem.context.AemContextImpl;
 
 /**
  * Mock context plugins.
- * TODO: remove this plugin as it has not effect?
  */
 public final class ContextPlugins {
 
@@ -51,8 +50,24 @@ public final class ContextPlugins {
    */
   private static void setUp(AemContextImpl context) {
 
-    // nothing to do - yet
+    // required for io.wcm.caconfig.extensions 1.9.0
+    registerByClassName(context, "io.wcm.caconfig.extensions.bindings.impl.AemConfigurationInjectResourceDetectionStrategy");
 
+  }
+
+  @SuppressWarnings("null")
+  private static boolean registerByClassName(AemContextImpl context, String className) {
+    try {
+      Class<?> clazz = Class.forName(className);
+      context.registerInjectActivateService(clazz.newInstance());
+      return true;
+    }
+    catch (ClassNotFoundException ex) {
+      return false;
+    }
+    catch (InstantiationException | IllegalAccessException ex) {
+      throw new RuntimeException(ex);
+    }
   }
 
 }
