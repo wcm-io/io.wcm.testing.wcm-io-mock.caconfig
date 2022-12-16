@@ -24,14 +24,14 @@ import static org.apache.sling.testing.mock.caconfig.ContextPlugins.CACONFIG;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Map;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.caconfig.ConfigurationBuilder;
 import org.apache.sling.testing.mock.caconfig.MockContextAwareConfig;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
-import com.google.common.collect.ImmutableMap;
 
 import io.wcm.testing.mock.aem.junit.AemContext;
 import io.wcm.testing.mock.aem.junit.AemContextBuilder;
@@ -55,7 +55,7 @@ public class MockCAConfigTest {
     context.currentPage(context.create().page("/content/region/site/en", "/apps/templates/sample"));
 
     MockContextAwareConfig.writeConfiguration(context, "/content/region/site",
-        SimpleConfig.class.getName(), ImmutableMap.<String, Object>of("param1", "value1"));
+        SimpleConfig.class.getName(), Map.of("param1", "value1"));
   }
 
   @Test
