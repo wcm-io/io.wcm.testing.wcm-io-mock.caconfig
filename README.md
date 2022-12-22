@@ -7,7 +7,7 @@
 Helps setting up mock environment for wcm.io Context-Aware Configuration.
 
 Documentation: https://wcm.io/testing/wcm-io-mock/caconfig/<br/>
-Issues: https://wcm-io.atlassian.net/browse/WTES<br/>
+Issues: https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.caconfig/issues<br/>
 Wiki: https://wcm-io.atlassian.net/wiki/<br/>
 Continuous Integration: https://github.com/wcm-io/io.wcm.testing.wcm-io-mock.caconfig/actions<br/>
 Commercial support: https://wcm.io/commercial-support.html
