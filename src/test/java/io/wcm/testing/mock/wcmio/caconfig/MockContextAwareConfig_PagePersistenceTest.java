@@ -27,19 +27,17 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.caconfig.ConfigurationBuilder;
 import org.apache.sling.testing.mock.caconfig.MockContextAwareConfig;
-import org.apache.sling.testing.mock.sling.builder.ImmutableValueMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 import io.wcm.caconfig.extensions.persistence.impl.PagePersistenceStrategy;
 import io.wcm.testing.mock.aem.junit.AemContext;
@@ -89,9 +87,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
 
   @Test
   public void testCollectionConfig() {
-    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", ListConfig.class, ImmutableList.of(
-        ImmutableMap.<String, Object>of("stringParam", "value1"),
-        ImmutableMap.<String, Object>of("stringParam", "value2")));
+    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", ListConfig.class, List.of(
+        Map.of("stringParam", "value1"),
+        Map.of("stringParam", "value2")));
 
     Collection<ListConfig> config = getConfigCollection(ListConfig.class);
     assertEquals(2, config.size());
@@ -108,10 +106,10 @@ public class MockContextAwareConfig_PagePersistenceTest {
 
   @Test
   public void testCollectionConfig_DifferentOrder() {
-    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", ListConfig.class, ImmutableList.of(
-        ImmutableMap.<String, Object>of("stringParam", "value2"),
-        ImmutableMap.<String, Object>of("stringParam", "value3"),
-        ImmutableMap.<String, Object>of("stringParam", "value1")));
+    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", ListConfig.class, List.of(
+        Map.of("stringParam", "value2"),
+        Map.of("stringParam", "value3"),
+        Map.of("stringParam", "value1")));
 
     Collection<ListConfig> config = getConfigCollection(ListConfig.class);
     assertEquals(3, config.size());
@@ -134,15 +132,15 @@ public class MockContextAwareConfig_PagePersistenceTest {
   public void testNestedSingletonConfig() {
     MockContextAwareConfig.writeConfiguration(context, "/content/region/site", NestedConfig.class,
         "stringParam", "value1",
-        "sub", ImmutableList.of(
-            ImmutableValueMap.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
-            ImmutableValueMap.of("subStringParam", "v2")),
-        "sub2", ImmutableValueMap.of(
+        "sub", List.of(
+            Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
+            Map.of("subStringParam", "v2")),
+        "sub2", Map.of(
             "sub2StringParam", "v3",
-            "sub", ImmutableValueMap.of("subStringParam", "v4"),
-            "subList", ImmutableList.of(ImmutableValueMap.of("subStringParam", "v5a"), ImmutableValueMap.of("subStringParam", "v5b"))),
-        "sub2List", ImmutableList.of(
-            ImmutableValueMap.of("sub2StringParam", "v6")));
+            "sub", Map.of("subStringParam", "v4"),
+            "subList", List.of(Map.of("subStringParam", "v5a"), Map.of("subStringParam", "v5b"))),
+        "sub2List", List.of(
+            Map.of("sub2StringParam", "v6")));
 
     NestedConfig config = getConfig(NestedConfig.class);
     assertEquals("value1", config.stringParam());
@@ -169,18 +167,18 @@ public class MockContextAwareConfig_PagePersistenceTest {
 
   @Test
   public void testNestedCollectionConfigConfig() {
-    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", NestedListConfig.class, ImmutableList.of(
-        ImmutableMap.<String, Object>of("stringParam", "value1",
-            "sub", ImmutableList.of(
-                ImmutableValueMap.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
-                ImmutableValueMap.of("subStringParam", "v2")),
-            "sub2", ImmutableValueMap.of(
+    MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", NestedListConfig.class, List.of(
+        Map.of("stringParam", "value1",
+            "sub", List.of(
+                Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
+                Map.of("subStringParam", "v2")),
+            "sub2", Map.of(
                 "sub2StringParam", "v3",
-                "sub", ImmutableValueMap.of("subStringParam", "v4"),
-                "subList", ImmutableList.of(ImmutableValueMap.of("subStringParam", "v5a"), ImmutableValueMap.of("subStringParam", "v5b"))),
-            "sub2List", ImmutableList.of(
-                ImmutableValueMap.of("sub2StringParam", "v6"))),
-        ImmutableMap.<String, Object>of("stringParam", "value2")));
+                "sub", Map.of("subStringParam", "v4"),
+                "subList", List.of(Map.of("subStringParam", "v5a"), Map.of("subStringParam", "v5b"))),
+            "sub2List", List.of(
+                Map.of("sub2StringParam", "v6"))),
+        Map.of("stringParam", "value2")));
 
     Collection<NestedListConfig> config = getConfigCollection(NestedListConfig.class);
     assertEquals(2, config.size());
