@@ -78,7 +78,7 @@ public final class MockCAConfig {
    * @deprecated Please use
    *             {@link MockContextAwareConfig#writeConfiguration(org.apache.sling.testing.mock.sling.context.SlingContextImpl, String, String, Map)}
    */
-  @Deprecated
+  @Deprecated(since = "1.0.2")
   public static void writeConfiguration(@NotNull AemContextImpl context, @NotNull String contextPath, @NotNull String configName,
       @NotNull Map<String, Object> values) {
     MockContextAwareConfig.writeConfiguration(context, contextPath, configName, values);
@@ -93,7 +93,7 @@ public final class MockCAConfig {
    * @deprecated Please use
    *             {@link MockContextAwareConfig#writeConfiguration(org.apache.sling.testing.mock.sling.context.SlingContextImpl, String, String, Object[])}
    */
-  @Deprecated
+  @Deprecated(since = "1.0.2")
   public static void writeConfiguration(@NotNull AemContextImpl context, @NotNull String contextPath, @NotNull String configName,
       @NotNull Object @NotNull... values) {
     MockContextAwareConfig.writeConfiguration(context, contextPath, configName, values);
@@ -108,7 +108,7 @@ public final class MockCAConfig {
    * @deprecated Please use
    *             {@link MockContextAwareConfig#writeConfigurationCollection(org.apache.sling.testing.mock.sling.context.SlingContextImpl, String, String, Collection)}
    */
-  @Deprecated
+  @Deprecated(since = "1.0.2")
   public static void writeConfigurationCollection(@NotNull AemContextImpl context, @NotNull String contextPath, @NotNull String configName,
       @NotNull Collection<Map<String, Object>> values) {
     MockContextAwareConfig.writeConfigurationCollection(context, contextPath, configName, values);
