@@ -24,8 +24,6 @@ import static org.apache.sling.testing.mock.caconfig.ContextPlugins.CACONFIG;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Map;
-
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.caconfig.ConfigurationBuilder;
 import org.apache.sling.testing.mock.caconfig.MockContextAwareConfig;
@@ -52,10 +50,10 @@ public class MockCAConfigTest {
 
     MockCAConfig.contextPathStrategyAbsoluteParent(context, 2);
 
-    context.currentPage(context.create().page("/content/region/site/en", "/apps/templates/sample"));
+    context.currentPage(context.create().page("/content/region/site/en"));
 
-    MockContextAwareConfig.writeConfiguration(context, "/content/region/site",
-        SimpleConfig.class.getName(), Map.of("param1", "value1"));
+    MockContextAwareConfig.writeConfiguration(context, "/content/region/site", SimpleConfig.class,
+        "stringParam", "value1");
   }
 
   @Test
@@ -63,8 +61,8 @@ public class MockCAConfigTest {
     Resource resource = context.request().getResource();
     SimpleConfig config = resource.adaptTo(ConfigurationBuilder.class).as(SimpleConfig.class);
     assertNotNull(config);
-    assertEquals("value1", config.param1());
-    assertEquals("def2", config.param2());
+    assertEquals("value1", config.stringParam());
+    assertEquals(5, config.intParam());
   }
 
 }

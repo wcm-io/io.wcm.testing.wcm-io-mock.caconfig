@@ -2,7 +2,7 @@
  * #%L
  * wcm.io
  * %%
- * Copyright (C) 2016 wcm.io
+ * Copyright (C) 2023 wcm.io
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,15 +19,17 @@
  */
 package io.wcm.testing.mock.wcmio.caconfig.example;
 
-import org.apache.sling.caconfig.annotation.Configuration;
+/**
+ * Nested sub config.
+ */
+public @interface NestedConfigSub {
 
-@Configuration(name = "testConfig")
-public @interface SimpleConfig {
+  String subStringParam();
 
-    String stringParam();
+  int intParam();
 
-    int intParam() default 5;
-
-    boolean boolParam();
+  String[] stringArrayParam() default {
+      "value1", "value2"
+  };
 
 }
