@@ -15,7 +15,7 @@ Helps setting up mock environment for [wcm.io Context-Aware Configuration][cacon
 
 |Context-Aware Configuration Mock Helper version |AEM version supported
 |------------------------------------------------|----------------------
-|1.2.2 or higher                                 |AEM 6.5.7+, AEMaaCS
+|1.2.2 or higher                                 |AEM 6.5.17+, AEMaaCS
 |1.2.0                                           |AEM 6.5+, AEMaaCS
 |1.1.x                                           |AEM 6.4+, AEMaaCS
 |1.0.x                                           |AEM 6.1+
