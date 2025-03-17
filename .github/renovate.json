@@ -5,7 +5,7 @@
     "github>wcm-io/renovate-config:automerge-parent"
   ],
   "ignoreDeps": [
-    "io.wcm.testing.aem-mock.junit4",
-    "io.wcm.caconfig.extensions"
+    "io.wcm:io.wcm.testing.aem-mock.junit4",
+    "io.wcm:io.wcm.caconfig.extensions"
   ]
 }
