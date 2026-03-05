@@ -38,6 +38,7 @@ public final class ContextPlugins {
    * Context plugin for wcm.io Context-Aware Configuration.
    */
   public static final @NotNull ContextPlugin<AemContextImpl> WCMIO_CACONFIG = new AbstractContextPlugin<AemContextImpl>() {
+
     @Override
     public void afterSetUp(@NotNull AemContextImpl context) throws Exception {
       setUp(context);

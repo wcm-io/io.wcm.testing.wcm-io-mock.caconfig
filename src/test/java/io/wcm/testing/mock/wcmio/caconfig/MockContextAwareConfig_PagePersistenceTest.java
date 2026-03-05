@@ -59,9 +59,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
 
   @Rule
   public AemContext context = new AemContextBuilder()
-      .plugin(CACONFIG)
-      .plugin(WCMIO_CACONFIG)
-      .build();
+    .plugin(CACONFIG)
+    .plugin(WCMIO_CACONFIG)
+    .build();
 
   @Before
   public void setUp() {
@@ -133,7 +133,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
     MockContextAwareConfig.writeConfiguration(context, "/content/region/site", NestedConfig.class,
         "stringParam", "value1",
         "sub", List.of(
-            Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
+            Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] {
+                "v1a", "v1b"
+            }),
             Map.of("subStringParam", "v2")),
         "sub2", Map.of(
             "sub2StringParam", "v3",
@@ -149,7 +151,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
     assertEquals(2, sub.length);
     assertEquals("v1", sub[0].subStringParam());
     assertEquals(5, sub[0].intParam());
-    assertArrayEquals(new String[] { "v1a", "v1b" }, sub[0].stringArrayParam());
+    assertArrayEquals(new String[] {
+        "v1a", "v1b"
+    }, sub[0].stringArrayParam());
     assertEquals("v2", sub[1].subStringParam());
 
     NestedConfigSub2 sub2 = config.sub2();
@@ -170,7 +174,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
     MockContextAwareConfig.writeConfigurationCollection(context, "/content/region/site", NestedListConfig.class, List.of(
         Map.of("stringParam", "value1",
             "sub", List.of(
-                Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] { "v1a", "v1b" }),
+                Map.of("subStringParam", "v1", "intParam", 5, "stringArrayParam", new String[] {
+                    "v1a", "v1b"
+                }),
                 Map.of("subStringParam", "v2")),
             "sub2", Map.of(
                 "sub2StringParam", "v3",
@@ -191,7 +197,9 @@ public class MockContextAwareConfig_PagePersistenceTest {
     assertEquals(2, sub.length);
     assertEquals("v1", sub[0].subStringParam());
     assertEquals(5, sub[0].intParam());
-    assertArrayEquals(new String[] { "v1a", "v1b" }, sub[0].stringArrayParam());
+    assertArrayEquals(new String[] {
+        "v1a", "v1b"
+    }, sub[0].stringArrayParam());
     assertEquals("v2", sub[1].subStringParam());
 
     NestedConfigSub2 sub2 = item1.sub2();

@@ -40,9 +40,9 @@ public class MockCAConfigTest {
 
   @Rule
   public AemContext context = new AemContextBuilder()
-      .plugin(CACONFIG)
-      .plugin(WCMIO_CACONFIG)
-      .build();
+    .plugin(CACONFIG)
+    .plugin(WCMIO_CACONFIG)
+    .build();
 
   @Before
   public void setUp() {
