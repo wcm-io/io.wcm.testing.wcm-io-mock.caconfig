@@ -29,7 +29,7 @@
         Switch to Java 11 as minimum version.
       </action>
       <action type="update" dev="sseifert">
-        Switch to AEM 6.5.17 as minimum version.
+        Switch to AEM 6.5.24 as minimum version (also compatible with AEM 6.6.2 / AEM 6.5 LTS SP2 and AEMaaCS).
       </action>
     </release>
 
