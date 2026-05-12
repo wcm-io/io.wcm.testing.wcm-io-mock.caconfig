@@ -19,6 +19,8 @@
  */
 package io.wcm.testing.mock.wcmio.caconfig;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.apache.sling.testing.mock.osgi.context.AbstractContextPlugin;
 import org.apache.sling.testing.mock.osgi.context.ContextPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -56,17 +58,19 @@ public final class ContextPlugins {
 
   }
 
-  @SuppressWarnings("null")
+  @SuppressWarnings({
+      "null", "java:S112"
+  })
   private static boolean registerByClassName(AemContextImpl context, String className) {
     try {
       Class<?> clazz = Class.forName(className);
-      context.registerInjectActivateService(clazz.newInstance());
+      context.registerInjectActivateService(clazz.getDeclaredConstructor().newInstance());
       return true;
     }
     catch (ClassNotFoundException ex) {
       return false;
     }
-    catch (InstantiationException | IllegalAccessException ex) {
+    catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
       throw new RuntimeException(ex);
     }
   }
